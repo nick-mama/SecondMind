@@ -60,7 +60,7 @@ With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#gl
 turbo build --filter=docs
 ```
 
-Without global `turbo`:
+Without global `turbo`
 
 ```sh
 npx turbo build --filter=docs
