@@ -1,38 +1,35 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # Dependencies
-node_modules
-.pnp
-.pnp.js
+node_modules/
 
-# Local env files
+# Build outputs
+dist/
+.next/
+out/
+build/
+
+# Environment variables - NEVER commit these
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.development
+.env.production
 
-# Testing
-coverage
+# Prisma
+packages/db/prisma/migrations/dev.db
+packages/db/prisma/dev.db
+
+# Docker
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/settings.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
 # Turbo
 .turbo
-
-# Vercel
-.vercel
-
-# Build Outputs
-.next/
-out/
-build
-dist
-
-
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Misc
-.DS_Store
-*.pem

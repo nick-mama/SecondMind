@@ -1,5 +1,35 @@
-node_modules
-# Keep environment variables out of version control
-.env
+# Dependencies
+node_modules/
 
-/generated/prisma
+# Build outputs
+dist/
+.next/
+out/
+build/
+
+# Environment variables - NEVER commit these
+.env
+.env.local
+.env.development
+.env.production
+
+# Prisma
+packages/db/prisma/migrations/dev.db
+packages/db/prisma/dev.db
+
+# Docker
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/settings.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Turbo
+.turbo
