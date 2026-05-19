@@ -1,11 +1,11 @@
 services:
   postgres:
     image: pgvector/pgvector:pg16
-    container_name: cortexos_postgres
+    container_name: secondmind_postgres
     environment:
-      POSTGRES_USER: cortexos
-      POSTGRES_PASSWORD: cortexos_dev
-      POSTGRES_DB: cortexos
+      POSTGRES_USER: secondmind
+      POSTGRES_PASSWORD: secondmind_dev
+      POSTGRES_DB: secondmind
     ports:
       - "5432:5432"
     volumes:

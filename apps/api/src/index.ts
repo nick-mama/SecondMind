@@ -1,16 +1,22 @@
+import dotenv from "dotenv";
+dotenv.config(); // THIS must be first
+
 import express from "express";
 import cookieParser from "cookie-parser";
+import passport from "passport";
+import authRouter from "./routes/auth";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// Middleware
-app.use(express.json()); // parse JSON request bodies
-app.use(express.urlencoded({ extended: true })); // parse form data
-app.use(cookieParser()); // parse cookies (needed for auth tokens)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(passport.initialize());
 
-// Health check route — always have one of these
-app.get("/health", (req, res) => {
+app.use("/auth", authRouter);
+
+app.get("/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
