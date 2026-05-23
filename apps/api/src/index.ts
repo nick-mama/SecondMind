@@ -8,6 +8,7 @@ import authRouter from "./routes/auth";
 import ingestionRouter from "./routes/ingestion";
 import "./workers/ingestionWorker";
 import "./workers/chunkingWorker";
+import uploadRouter from "./routes/upload";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -19,6 +20,7 @@ app.use(passport.initialize());
 
 app.use("/auth", authRouter);
 app.use("/ingestion", ingestionRouter);
+app.use("/upload", uploadRouter);
 
 app.get("/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
