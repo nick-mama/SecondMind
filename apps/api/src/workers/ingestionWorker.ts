@@ -1,5 +1,7 @@
 import { Worker, Job } from "bullmq";
 import { prisma } from "@secondmind/db";
+import { Prisma } from "@secondmind/db";
+import { extractMetadata } from "../lib/metadataExtractor";
 import type { IngestionJobData } from "../types/ingestion";
 
 const connection = {
@@ -32,13 +34,20 @@ export const ingestionWorker = new Worker<IngestionJobData>(
 
     await job.updateProgress(40);
 
+    // Extract metadata from content
+    const extracted = extractMetadata(content);
+
     const document = await prisma.document.create({
       data: {
         userId,
         title,
         source,
         content,
-        metadata: { sourceId, ...metadata },
+        metadata: {
+          sourceId,
+          ...metadata,
+          extracted,
+        } as unknown as Prisma.InputJsonValue,
       },
     });
 
